@@ -8,6 +8,9 @@
 import UIKit
 import SnapKit
 
+let vm = TodoViewModel()
+let firstData = Task(taskName: "buoldumu")
+
 class NewTaskViewController: UIViewController {
    //MARK: Views
     private lazy var mainTitle: UILabel  = {
@@ -61,11 +64,22 @@ class NewTaskViewController: UIViewController {
         setupView()
 
     }
-    
+
     //MARK: Functions
     @objc func saveButtonClicked() {
         print("save button clicked")
-    }
+        vm.addNewTask(task: firstData)
+        if let data = UserDefaults.standard.data(forKey: "deneme") {
+            do {
+            let decoder = JSONDecoder()
+            let task = try decoder.decode(Task.self, from: data)
+                print(task.taskName)
+            }
+            catch {
+            print("unable to decode task")
+        }
+        } }
+    
     //MARK: Setup views and constraints
     func setupView() {
         view.backgroundColor = .brown

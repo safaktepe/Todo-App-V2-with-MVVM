@@ -7,22 +7,23 @@
 
 import Foundation
 
-class TodoViewModel: ObservableObject {
+class TodoViewModel: NSObject {
     static var sharedInstance = TodoViewModel()
-    
+   
+    let tasksKey = "task_list"
     var tasks = [Task]()
     
-    init(){
-        getTasks()
-    }
     typealias completionHandler = () -> Void
     
-    func addNewTask(task: Task, completion: (completionHandler) -> Void) {
-   }
-    
-    func getTasks() {
-        let newTasks = [Task(taskName: "matematik"),
-                        Task(taskName: "ingilizce") ]
-        tasks.append(contentsOf: newTasks)
-    }
+    func addNewTask(task: Task) {
+        do{
+            let encoder = JSONEncoder()
+            let jsonData = try encoder.encode(task)
+            UserDefaults.standard.set(jsonData, forKey: "deneme")
+            
+            } catch {
+            print("Unable to Encode Task (\(error))")
+            }
+        }
 }
+

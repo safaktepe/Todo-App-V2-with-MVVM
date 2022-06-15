@@ -10,7 +10,6 @@ import SnapKit
 
 class TasksListViewController: UIViewController {
     
-    
     var data: [Task] = [
         Task(taskName: "matematik"),
         Task(taskName: "ingilizce")

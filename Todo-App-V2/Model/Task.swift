@@ -15,25 +15,8 @@ struct Task: Codable {
         self.taskName = taskName
       //  self.taskDescription = taskDescription
     }
+   
 }
 
 
-
-
-
-/*
- let firstTask = Task(taskName: "tryciz1")
-
- do{
-     // Create JSON Encoder
-     let encoder = JSONEncoder()
-
-     // Encode Note
-     let data = try encoder.encode(firstTask)
-
-     // Write/Set Data
-     UserDefaults.standard.set(data, forKey: "task")
-
- } catch {
-     print("Unable to Encode Task (\(error))")
- }*/
+ 
